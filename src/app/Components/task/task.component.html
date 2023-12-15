@@ -1,0 +1,20 @@
+<mat-accordion class="w-100">
+    <mat-expansion-panel class="panel" >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ms-auto fs-4">
+          {{task?.title}}
+        </mat-panel-title>
+        <mat-panel-description class="descrption d-flex justify-content-end fs-6 ">
+          High
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p class="fs-3 text-start">{{task?.description}}</p>
+      <div class="d-flex justify-content-end">
+        <button class="btn">
+            <mat-icon class="edit" (click)="openUpdateDialog(task)">edit</mat-icon>
+            <mat-icon class="delete" (click)="DeleteTask(task)" >delete</mat-icon>
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

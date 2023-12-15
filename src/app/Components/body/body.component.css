@@ -1,0 +1,111 @@
+.containerr{
+    background-color: #f0f3f7;
+    text-align: center;
+    height: calc(100vh - 56px);
+    overflow-y: scroll;
+    max-height: fit-content;
+}
+.example-container {
+    width: 400px;
+    max-width: 100%;
+    margin: 0 25px 25px 0;
+    display: inline-block;
+    vertical-align: top;
+    background: #e6ebf2 !important;
+    padding: 5px 12px 12px;
+  }
+  
+  .example-list {
+    min-height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+    
+  }
+  
+.example-box {
+    padding: 20px 10px;
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+  }
+  
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+.cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+.example-box:last-child {
+    border: none;
+  }
+  
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+.Todo{
+    border-top: 5px solid red;
+}
+.red{
+    border-color:red;
+    color: red;
+}
+.green{
+    border-color:green;
+    color: green;
+}
+.yellow{
+    border-color:yellow;
+    color: yellow;
+}
+.InProgress{
+    border-top: 5px solid yellow;
+}
+.done{
+    border-top: 5px solid green;
+}
+h2{
+    text-align: left;
+    margin: 4px 0px;
+}
+span.fs-4{
+    color:gray;
+}
+.example-box[_ngcontent-ng-c3295226817]{
+    padding: 0px !important;
+    height: fit-content;
+    margin-bottom: 12px;
+}
+.coll{
+    position: relative;
+}
+.coll button{
+    margin-top: 2px;
+    position: absolute;
+    /* color: white; */
+    top: 0px;
+    right: 0px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid ;
+    padding: 4px;
+    border-radius: 50%;
+}
+  
