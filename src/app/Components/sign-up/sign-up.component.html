@@ -3,17 +3,24 @@
 <div>
     <h2>Sign Up</h2>
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
+        <mat-label>Name:</mat-label>
+        <input matInput type="text" formControlName="Name">
+        <mat-error>{{NameErrorNessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
         <mat-label>Email:</mat-label>
         <input matInput type="email" formControlName="email">
+        <mat-error>{{EmailErrorNessage()}}</mat-error>
       </mat-form-field>
   
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Password:</mat-label>
         <input matInput type="password" formControlName="password">
+        <mat-error>{{PasswordErrorNessage()}}</mat-error>
       </mat-form-field>
-  
-      <button mat-raised-button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+      <button class="d-block ms-auto btn btn-primary w-100"  type="submit" [disabled]="!signupForm.valid">Sign Up</button>
     </form>
   </div>
   

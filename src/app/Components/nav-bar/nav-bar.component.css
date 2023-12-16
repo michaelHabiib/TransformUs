@@ -4,3 +4,9 @@ nav{
 .fs-2{
     color: white;
 }
+li{
+    cursor: pointer;
+}
+.navbar-toggler{
+    border-color: white;
+}

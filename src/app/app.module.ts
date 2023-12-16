@@ -24,6 +24,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSliderModule} from '@angular/material/slider';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
+import { SignInComponent } from './Components/sign-in/sign-in.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import {MatCardModule} from '@angular/material/card';
+import { MasterPageComponent } from './Components/master-page/master-page.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ColorPickerComponent } from './Components/color-picker/color-picker.component';
+import { FormsModule } from '@angular/forms';
+import { NotifctionsComponent } from './Components/notifctions/notifctions.component';
 const environmenttt : any = {
   production : false,
   firebaseConfig : {
@@ -43,7 +52,12 @@ const environmenttt : any = {
     NewTaskComponent,
     TaskComponent,
     UpdateTaskComponent,
-    SignUpComponent
+    SignUpComponent,
+    SignInComponent,
+    ProfileComponent,
+    MasterPageComponent,
+    ColorPickerComponent,
+    NotifctionsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +75,11 @@ const environmenttt : any = {
     MatSelectModule,
     MatNativeDateModule,
     MatInputModule,
-    MatSliderModule
+    MatSliderModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,6 +8,13 @@ body{
 }
 ::ng-deep .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
     flex-basis :unset !important;
+    font-weight: 400;
+}
+::ng-deep .mat-expansion-panel-header-title{
+  width: 100%;
+}
+p.text-start{
+  font-size: 18px !important;
 }
 mat-icon{
     cursor: pointer;
@@ -18,3 +25,23 @@ mat-icon{
   mat-icon.delete{
     color: rgb(253, 67, 67);
   }
+  .mat-progress-spinner {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .message {
+    position: absolute;
+    text-align: center;
+    top: 55%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+  }
+  .example-margin1::ng-deep circle{
+    stroke: green !important;
+    }
+  .example-margin2::ng-deep circle{
+    stroke: red !important;
+    }
+  .example-margin3::ng-deep circle{
+    stroke: yellow !important;
+    }

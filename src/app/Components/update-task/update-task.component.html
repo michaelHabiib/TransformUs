@@ -1,1 +1,57 @@
-<p>update-task works!</p>
+<div class="container">
+    <h2 class="text-center my-1" >Update Task</h2>
+    <button (click)="closeDialog()" class=" btn-close">
+        <!-- <mat-icon calss="close" >close</mat-icon> -->
+    </button>
+    <form [formGroup]="UpdateTaskForm" class="text-center">
+        <div class="d-flex section-2 my-2 ">
+            <mat-form-field  appearance="outline" class="mx-1">
+                <mat-label>Tittle</mat-label>
+                <input matInput #input 
+                placeholder="Ex. Finish Project" formControlName="title">
+                <mat-error>{{TittleErrorMessage()}}</mat-error>
+              </mat-form-field>
+              
+            <mat-form-field  appearance='outline' class="mx-1">
+                <mat-label>Author</mat-label>
+                <input matInput #input1 
+                placeholder="Ex. Michael Ramzy" formControlName="author">
+                <mat-error>{{AuthorErrorMessage()}}</mat-error>
+              </mat-form-field>
+        </div>
+
+          <mat-form-field appearance='outline' class="disc mx-2 my-1">
+            <mat-label>Descrption</mat-label>
+            <textarea matInput #input2 maxlength="40" formControlName="description"></textarea>
+            <mat-error>{{DescriptionErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <div class="d-flex">
+            <mat-form-field appearance='outline' class="mx-1">
+                <mat-label>Stage</mat-label>
+                <mat-select formControlName="stage" >
+                  <mat-option value="1">todo</mat-option>
+                  <mat-option value="2">In Progress</mat-option>
+                  <mat-option value="3">Done</mat-option>
+                </mat-select>
+                <mat-error>{{StageErrorMessage()}}</mat-error>
+              </mat-form-field>
+              
+              <mat-form-field appearance='outline' class="mx-1">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="datepicker" readonly formControlName="dueDate" >
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                </mat-datepicker>
+                <mat-error>{{dueDateErrorMessage()}}</mat-error>
+              </mat-form-field>
+          </div>
+
+          <mat-slider calss="my-2" min="0" max="10" step="1" thumbLabel  discrete [ngClass]="{'my-slider': UpdateTaskForm.value.priority <= 3, 'my-slider1' : UpdateTaskForm.value.priority > 3.1 && UpdateTaskForm.value.priority <= 6,'my-slider2' : UpdateTaskForm.value.priority > 6 }" >
+            <input #mika  formControlName="priorty" matSliderThumb>
+        </mat-slider>
+        <div class="d-flex justify-content-end my-1">
+            <button class="btn btn-success text-white" (click)="UpdateTask()" [disabled]="!UpdateTaskForm.valid" >Submit</button>
+        </div>
+    </form>
+</div>

@@ -9,13 +9,15 @@ import { UpdateTaskComponent } from '../update-task/update-task.component';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  ngOnInit(): void {
-
-  }
-  constructor(private dialog : MatDialog, private _StoreService : StoreService){}
+  //Properties
   @Input() task!: Task ;
   @Output() edit = new EventEmitter<Task>();
 
+  ngOnInit(): void {}
+
+  constructor(private dialog : MatDialog, private _StoreService : StoreService){}
+
+  // Method to Open Update Task Dialog
   openUpdateDialog(task : Task){
     this.dialog.open(UpdateTaskComponent,{
       data : {
@@ -23,8 +25,9 @@ export class TaskComponent implements OnInit {
       }
     })
   }
+  // Method To Delete Task 
   DeleteTask(task : Task){
-    // this._TaskService.deleteProdusBayonete(task)
+    this._StoreService.deleteTask(task)
   }
 
 }

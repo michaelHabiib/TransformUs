@@ -1,0 +1,4 @@
+<div class="color-picker ps-5 d-flex align-items-center justify-content-start p-2" [@slideInOut]="isOpen ? 'in' : 'out'" >
+    <span class="" >Background Color : </span>
+    <input class=" ms-2" type="color" [(ngModel)]="selectedColor" (input)="changeColor()">
+</div>
