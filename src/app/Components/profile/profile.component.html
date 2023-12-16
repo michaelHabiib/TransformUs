@@ -1,10 +1,17 @@
 <!-- user-profile.component.html -->
 <div class="user-profile" >
-    <div class="profile-picture"></div>
-    <div class="user-details">
-      <h2 class="mb-0">Hello, {{ isLoged ? userDataDecoded.name : 'username'}}</h2>
-      <div class="email ">{{ isLoged ? userDataDecoded.email : 'username@gmail.com'}}</div>
+    <div class="profile-picture">
+      <!-- <img src="assets/images/kanbanboard_120442.png" alt="kanban Image"> -->
+    </div>
+    <div class="user-details" *ngIf="isLoged">
+      <h2 class="mb-0">Hello, {{userDataDecoded.name }}</h2>
+      <div class="email ">{{userDataDecoded.email }}</div>
       <p class="text-denger" *ngIf="!isLoged"> please Login</p>
+    </div>
+    <div class="user-details" *ngIf="!isLoged">
+      <h2 class="mb-0">Hello, Username</h2>
+      <div class="email ">username@gmail.com</div>
+      <p class="text-danger" *ngIf="!isLoged" routerLink="/home/login" > please Login</p>
     </div>
 </div>
   

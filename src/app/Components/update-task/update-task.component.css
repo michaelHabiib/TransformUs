@@ -69,3 +69,7 @@ textarea{
     max-height: 80px !important;
     width: 97.7%;
 }
+.container{
+  width: 100%;
+  max-width: 100%;
+}

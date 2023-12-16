@@ -17,6 +17,8 @@ export class ColorService {
 
   // Method To Update The Color
   changeColor(color: string) {
+    console.log(color);
+    
     this.colorSubject.next(color);
   }
 

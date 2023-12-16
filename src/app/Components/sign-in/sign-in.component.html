@@ -6,11 +6,14 @@
       <mat-form-field appearance="outline">
         <mat-label>Email:</mat-label>
         <input matInput type="email" formControlName="email">
+        <mat-error>{{EmailErrorNessage()}}</mat-error>
       </mat-form-field>
   
       <mat-form-field appearance="outline">
         <mat-label>Password:</mat-label>
-        <input matInput type="password" formControlName="password">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+        <mat-error>{{PasswordErrorNessage()}}</mat-error>
+        <mat-icon matSuffix class="pointer" (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon> 
       </mat-form-field>
       <button class="d-block ms-auto btn btn-primary w-100"  type="submit" [disabled]="!signInForm.valid">Sign In</button>
     </form>

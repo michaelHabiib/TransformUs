@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -10,6 +11,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 export class SignInComponent {
   // Properties
   signInForm!: FormGroup;
+  hide:boolean =true
 
   constructor(private fb: FormBuilder, public authService: AuthService) {}
 
@@ -23,19 +25,24 @@ export class SignInComponent {
 
   // Method To SIgn In
   onSubmit() {
-    if (this.signInForm.valid) {
-      const modal = {
-        email : this.signInForm.value.email,
-        password : this.signInForm.value.password
+    if(localStorage.getItem('userToken')){
+      Swal.fire('You Already Loged In')
+    }else{
+      if (this.signInForm.valid) {
+        const modal = {
+          email : this.signInForm.value.email,
+          password : this.signInForm.value.password
+        }
+  
+        this.authService.signIn(modal.email, modal.password).then(() => {
+          this.authService.toggleLogedState()
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       }
-
-      this.authService.signIn(modal.email, modal.password).then(() => {
-        this.authService.toggleLogedState()
-      })
-      .catch((error) => {
-        console.error(error);
-      });
     }
+
   }
 
   //Methods To Hndle Input Errors

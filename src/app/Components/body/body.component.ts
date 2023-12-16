@@ -5,6 +5,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { MatDialog } from '@angular/material/dialog';
 import { ColorService } from 'src/app/Services/color.service';
 import { AuthService } from 'src/app/Services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-body',
@@ -23,14 +24,15 @@ export class BodyComponent {
 
 
   constructor(private _StoreService : StoreService, private dialog : MatDialog,
-    private _ColorService : ColorService, private AuthService : AuthService
-    ){}
+    private _ColorService : ColorService, private AuthService : AuthService){}
 
 
   ngOnInit(): void {
     this.GetAllTasks()
     // subscrbtion For the Backgorund Color
-    this._ColorService.currentColor$.subscribe(color => {
+    this._ColorService.currentColor$.subscribe((color) => {
+      console.log(color);
+      
       this.backgroundColor = color;
     });
 
@@ -65,7 +67,11 @@ export class BodyComponent {
 
       },
       error: (err) => {
-        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Failed To Get Data!",
+        });
       }
     });
   }
@@ -76,9 +82,6 @@ export class BodyComponent {
     this.todo = tasks.filter(task => task.stage === '1'),
     this.inProgress = tasks.filter(task => task.stage === '2'),
     this.done = tasks.filter(task => task.stage === '3')
-    console.log(this.todo);
-    console.log(this.inProgress);
-    console.log(this.done);
     
   }
 

@@ -13,7 +13,7 @@ const routes: Routes = [
     {path : '', redirectTo : 'Tasks', pathMatch:'full'},
     {path : 'login', component:SignInComponent},
     {path : 'register', component:SignUpComponent},
-    {path : 'Tasks', component:BodyComponent, canActivate: [AuthGuard],},
+    {path : 'Tasks', component:BodyComponent}, //[ canActivate : AuthGuard] This Gaurd is Working but not assign to any toutes just for free exploriing
     ]
   },
   {path : '', redirectTo : 'home', pathMatch : 'full'}

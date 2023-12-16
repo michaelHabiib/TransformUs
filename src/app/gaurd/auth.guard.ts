@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
+  // This Gaurd is Working but not assign to any toutes just for free exploriing
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

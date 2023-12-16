@@ -30,4 +30,7 @@ div {
   .d-flex button{
     width: 70px !important;
   }
+  .pointer{
+    cursor: pointer;
+  }
   

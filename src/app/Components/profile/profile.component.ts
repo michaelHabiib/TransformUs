@@ -18,14 +18,21 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
 
     // Decoding The token
-    this.userData = localStorage.getItem('userToken')
-    if(this.userData){
-      this.userDataDecoded = jwt_decode.jwtDecode(this.userData)
-    }
+
     
     // Subscrbtion To Know If The User Is loged Or Not
-    this.authService.LogedState$.subscribe((state :boolean) => {
+    this.authService.LogedState$.subscribe((state :boolean) => {      
       this.isLoged = state;
+      if(this.isLoged){
+        if(localStorage.getItem('userToken')){
+          this.userData = localStorage.getItem('userToken')
+        }
+    
+        if(this.userData){
+          this.userDataDecoded = jwt_decode.jwtDecode(this.userData)
+        }
+      }
+
     });
     
   }

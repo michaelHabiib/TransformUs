@@ -17,8 +17,9 @@
   
       <mat-form-field appearance="outline">
         <mat-label>Password:</mat-label>
-        <input matInput type="password" formControlName="password">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" [type]="hide ? 'password' : 'text'">
         <mat-error>{{PasswordErrorNessage()}}</mat-error>
+        <mat-icon matSuffix class="pointer" (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon> 
       </mat-form-field>
       <button class="d-block ms-auto btn btn-primary w-100"  type="submit" [disabled]="!signupForm.valid">Sign Up</button>
     </form>

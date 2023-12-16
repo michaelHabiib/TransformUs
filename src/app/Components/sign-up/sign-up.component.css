@@ -17,6 +17,9 @@ div {
   form {
     width: 300px; /* Adjust the form width as needed */
   }
+  .pointer{
+    cursor: pointer;
+  }
   
   mat-form-field {
     width: 100%;

@@ -11,6 +11,7 @@ export class SignUpComponent {
     // Properties
 
   signupForm!: FormGroup;
+  hide = true
 
   constructor(private fb: FormBuilder, public authService: AuthService) {}
 

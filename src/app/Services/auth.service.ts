@@ -1,23 +1,37 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { getAuth } from 'firebase/auth';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, async } from 'rxjs';
 import Swal from 'sweetalert2';
 import * as jwt_decode from "jwt-decode";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit {
   auth = getAuth();
 
   // BehaviorSubject To kNow Then user Is Loged
-  private LogedState = new BehaviorSubject<boolean>(false);
-  LogedState$ = this.LogedState.asObservable();
+  private LogedState !: BehaviorSubject<boolean>
+  LogedState$!: Observable<boolean>;
+  // private LogedState = new BehaviorSubject<boolean>(false);
+  
 
   constructor(public afAuth: AngularFireAuth,private router : Router,
-    private afs: AngularFirestore) {}
+    private afs: AngularFirestore) {
+      if(localStorage.getItem('userToken')){
+        this.LogedState = new BehaviorSubject<boolean>(true)
+        this.LogedState$ = this.LogedState.asObservable();
+  
+      }else{
+        this.LogedState = new BehaviorSubject<boolean>(false)
+        this.LogedState$ = this.LogedState.asObservable();
+      }
+    }
+  ngOnInit(): void {
+
+  }
 
   // Method update the observable To kNow Then user Is Loged
     toggleLogedState() {
@@ -29,18 +43,20 @@ export class AuthService {
       await this.afAuth.createUserWithEmailAndPassword(email, password).then((result) => {
         result.user?.updateProfile({displayName :displayName })
         this.router.navigate(['home/login'])
-      }), (error : any) => {
+      }).catch((err) => {
         this.fireAlret('Something went wrong!')
-      }
+      })
     }
 
     // Method TO Sign In
     signIn(email: string, password: string) {
+
       return this.afAuth.signInWithEmailAndPassword(email, password).then((result) => {
         return result.user?.getIdToken();
       }).then((idToken) => {
-        localStorage.setItem('userToken', JSON.stringify(idToken) );
-        this.router.navigate(['home']);
+         localStorage.setItem('userToken', JSON.stringify(idToken))
+          this.router.navigate(['home']);
+         
       }).catch((err) => {
         this.fireAlret('Invalid Email or Password!');
       });
@@ -50,7 +66,7 @@ export class AuthService {
     signOut() {
       return this.afAuth.signOut();
     }
-    
+
     // Method To Firw ALret With Customize Message
     fireAlret(message : string){
       Swal.fire({

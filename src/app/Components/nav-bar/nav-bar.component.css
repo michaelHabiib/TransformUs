@@ -10,3 +10,6 @@ li{
 .navbar-toggler{
     border-color: white;
 }
+.navbar-toggler-icon{
+    background-image: none;
+}
